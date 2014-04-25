@@ -1,5 +1,3 @@
 module Pesapal
-  def directOrder
-
-  end
+  require 'order_url'
 end
