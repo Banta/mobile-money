@@ -1,3 +1,5 @@
-module MobileMoney
-  VERSION = "0.1.1"
+module Mobile
+  module Money
+    VERSION = "0.1.1"
+  end
 end
