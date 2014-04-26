@@ -1,3 +1,3 @@
 module Pesapal
-  require 'order_url'
+  include order_url
 end
