@@ -41,7 +41,7 @@ module Pesapal
     end
 
     def consumer_secret
-      ails.application.secrets.pesapal_consumer_secret
+      Rails.application.secrets.pesapal_consumer_secret
     end
 
     def signed_request
