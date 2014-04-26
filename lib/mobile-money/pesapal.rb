@@ -11,8 +11,35 @@ module Pesapal
     HTTP_METHOD = 'get'
     API_ACTION = '/API/PostPesapalDirectOrderV4'
 
-    def initialize(post_data_xml, callback_url, test=true)
-      @post_data_xml   = post_data_xml
+    def initialize(data={}, callback_url, test=true)
+      line_items = ""
+
+      if data[:line_items].count > 0
+        data[:line_items].each do |line_item|
+          line_items << %Q[<lineitem uniqueid="#{line_item[:id]}"
+                              particulars="#{line_item[:name]}"
+                              quantity="#{line_item[:quantity] || '1'}"
+                              unitcost="#{line_item[:unit_cost]}"
+                              subtotal="#{line_item[:sub_total]}">
+                            </lineitem>]
+        end
+      end
+      data_xml = %[<?xml version="1.0" encoding="utf-8"?>
+<PesapalDirectOrderInfo
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+
+        Amount="#{data[:amount]}" Currency="#{data[:currency] || 'USD'}"
+        Description="#{data[:description]}" Type="#{data[:merchant] ||'MERCHANT'}" Reference="#{data[:reference]}"
+        FirstName="#{data[:first_name]}" LastName="#{data[:last_name]}" Email="#{data[:email]}" PhoneNumber="#{data[:phone]}"
+        xmlns="http://www.pesapal.com">
+  <lineitems>
+    #{line_items}
+  </lineitems>
+</PesapalDirectOrderInfo>]
+
+
+      @post_data_xml   = data_xml
       @callback_url    = callback_url
       @token           = nil
       @test            = test
