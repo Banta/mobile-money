@@ -29,9 +29,15 @@ module Pesapal
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xmlns:xsd="http://www.w3.org/2001/XMLSchema"
 
-        Amount="#{data[:amount]}" Currency="#{data[:currency] || 'USD'}"
-        Description="#{data[:description]}" Type="#{data[:merchant] ||'MERCHANT'}" Reference="#{data[:reference]}"
-        FirstName="#{data[:first_name]}" LastName="#{data[:last_name]}" Email="#{data[:email]}" PhoneNumber="#{data[:phone]}"
+        Amount="#{data[:amount]}"
+        Currency="#{data[:currency] || 'USD'}"
+        Description="#{data[:description]}"
+        Type="#{data[:merchant] ||'MERCHANT'}"
+        Reference="#{data[:reference]}"
+        FirstName="#{data[:first_name]}"
+        LastName="#{data[:last_name]}"
+        Email="#{data[:email]}"
+        PhoneNumber="#{data[:phone]}"
         xmlns="http://www.pesapal.com">
   <lineitems>
     #{line_items}
