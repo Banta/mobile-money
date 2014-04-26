@@ -1,4 +1,4 @@
-class OrderUrl
+module OrderUrl
 
   require 'oauth'
   require 'uri'
