@@ -1,3 +1,3 @@
 require "mobile-money/version"
-require 'mobile-money/order_url'
-require 'mobile-money/query_payment_status'
+require 'mobile-money/pesapal/order_url'
+require 'mobile-money/pesapal/query_payment_status'
