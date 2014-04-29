@@ -6,14 +6,14 @@ module Pesapal
     require 'active_support/core_ext/object/to_query'
     require 'htmlentities'
 
-    attr_reader :post_data_xml, :callback_url, :token, :test
+    attr_reader :pesapal_merchant_reference, :pesapal_transaction_tracking_id, :token, :test
 
     HTTP_METHOD = 'get'
     API_ACTION = '/API/QueryPaymentStatus'
 
-    def initialize(post_data_xml, callback_url, test=true)
-      @post_data_xml   = post_data_xml
-      @callback_url    = callback_url
+    def initialize(pesapal_merchant_reference, pesapal_transaction_tracking_id, test=true)
+      @pesapal_merchant_reference   = pesapal_merchant_reference
+      @pesapal_transaction_tracking_id    = pesapal_transaction_tracking_id
       @token           = nil
       @test            = test
     end
@@ -55,8 +55,8 @@ module Pesapal
 
     def params
       @params ||= {
-          'oauth_callback'       => callback_url,
-          'pesapal_request_data' => escaped_xml,
+          'pesapal_merchant_reference'       => pesapal_merchant_reference,
+          'pesapal_transaction_tracking_id' => pesapal_transaction_tracking_id,
       }
     end
 
@@ -66,10 +66,6 @@ module Pesapal
         strings << "#{key}=#{CGI::escape(value)}"
       end
       strings.join('&')
-    end
-
-    def escaped_xml
-      HTMLEntities.new.encode(post_data_xml)
     end
   end
 end
