@@ -9,7 +9,7 @@ module Pesapal
     attr_reader :post_data_xml, :callback_url, :token, :test
 
     HTTP_METHOD = 'get'
-    API_ACTION = '/API/PostPesapalDirectOrderV4'
+    API_ACTION = '/API/QueryPaymentStatus'
 
     def initialize(post_data_xml, callback_url, test=true)
       @post_data_xml   = post_data_xml
