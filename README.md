@@ -1,5 +1,7 @@
 # mobile-money
 
+<a href="https://codeclimate.com/github/Banta/mobile-money"><img src="https://codeclimate.com/github/Banta/mobile-money.png" /></a>
+
 TODO: Write a gem description
 
 ## Installation
