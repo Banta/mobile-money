@@ -65,7 +65,7 @@ module Pesapal
       params.each do |key, value|
         strings << "#{key}=#{value}"
       end
-      URI.escape(strings.join('&'))
+      strings.join('&')
     end
   end
 end
