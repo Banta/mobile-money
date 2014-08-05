@@ -63,7 +63,7 @@ module Pesapal
     def params_to_string
       strings = []
       params.each do |key, value|
-        strings << "#{key}=#{value}"
+        strings << "#{key}=#{URI.escape(value)}"
       end
       strings.join('&')
     end
