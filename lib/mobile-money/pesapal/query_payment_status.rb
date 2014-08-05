@@ -63,9 +63,9 @@ module Pesapal
     def params_to_string
       strings = []
       params.each do |key, value|
-        strings << "#{key}=#{ERB::Util.url_encode(value)}"
+        strings << "#{key}=#{value}"
       end
-      strings.join('&')
+      URI.escape(strings.join('&'))
     end
   end
 end
